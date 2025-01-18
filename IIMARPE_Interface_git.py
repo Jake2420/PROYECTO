@@ -72,6 +72,9 @@ if "files_processed" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
+#Solucion a no se encuentra la carpeta tenat
+chromadb.api.client.SharedSystemClient.clear_system_cache()
+
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
