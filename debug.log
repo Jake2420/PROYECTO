@@ -1,0 +1,418 @@
+2025-01-14 16:58:15,551 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:58:15,551 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:58:15,551 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:58:15,551 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:58:15,551 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:58:15,551 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:58:15,877 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 16:58:16,345 - DEBUG - Starting component System
+2025-01-14 16:58:16,345 - DEBUG - Starting component Posthog
+2025-01-14 16:58:16,345 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 16:58:16,345 - DEBUG - Starting component SqliteDB
+2025-01-14 16:58:16,373 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 16:58:16,373 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 16:58:16,373 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 16:58:16,373 - DEBUG - Starting component LocalExecutor
+2025-01-14 16:58:16,373 - DEBUG - Starting component SegmentAPI
+2025-01-14 16:58:16,383 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 16:58:16,881 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 16:58:17,785 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 16:58:27,080 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:58:27,080 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:58:27,080 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:58:27,080 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:58:27,080 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:58:27,080 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:58:27,720 - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x000001BA514A4A40>, 'json_data': {'input': [[80025, 25, 220, 15, 1252, 31345, 25, 220, 16, 1252, 31345, 25, 220, 17, 1881, 1252, 31345, 25, 220, 18, 1252, 31345, 25, 220, 19, 1252, 31345, 25, 220, 20, 1252, 31345, 25, 220, 21, 220, 1252, 31345, 25, 220, 22, 1252, 31345, 25, 220, 23, 1252, 31345, 25, 220, 24, 310, 1252, 31345, 25, 220, 605, 198, 286, 33278, 286, 452, 1308, 257, 15116, 29914, 256, 362, 23177, 926, 3204, 816, 452, 40600, 7157, 996, 16421, 1846, 996, 393, 1600, 46, 286, 423, 15259, 393, 29255, 71466, 415, 46947, 68321, 256, 90340, 37, 97785, 257, 27563, 793, 46, 73577, 42814, 33750, 198, 286, 33278, 692, 220, 16, 286, 33278, 220, 507, 85, 88151, 4563, 5325, 386, 727, 692, 220, 2166, 260, 220, 1490, 256, 220, 6726, 20304, 6083, 415, 9419, 981, 64, 286, 33278, 220, 220, 24597, 26067, 11057, 220, 78823, 12405, 23, 59131, 916, 198, 286, 33278, 692, 220, 17, 286, 33278, 386, 96528, 507, 85, 88151, 18866, 3444, 260, 220, 806, 260, 220, 1774, 256, 220, 15831, 21984, 3391, 286, 473, 29230, 286, 33278, 220, 220, 24597, 26067, 11057, 220, 78823, 12405, 23, 59131, 916]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+2025-01-14 16:58:27,769 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2025-01-14 16:58:27,770 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-01-14 16:58:27,771 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001BA51221D10>
+2025-01-14 16:58:27,771 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001BA50E472F0> server_hostname='api.openai.com' timeout=None
+2025-01-14 16:58:27,805 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001BA511BEFD0>
+2025-01-14 16:58:27,805 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-14 16:58:27,805 - DEBUG - send_request_headers.complete
+2025-01-14 16:58:27,805 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-14 16:58:27,805 - DEBUG - send_request_body.complete
+2025-01-14 16:58:27,805 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-14 16:58:28,287 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Jan 2025 21:58:29 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002'), (b'openai-organization', b'user-jbyqjadhpy3uugoo7acih7ow'), (b'openai-processing-ms', b'81'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-776b696f78-psqkt'), (b'x-envoy-upstream-service-time', b'45'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999811'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'11ms'), (b'x-request-id', b'req_b8e87f8ca48b2a9d265bc9e184c6ac5f'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=N5hpHXg6_s05kGl3FbUT.qV1pkn7VrOnmlKEVGMMo8A-1736891909-1.0.1.1-KQO.MVrlELHwX7G_IyBYxxYdLamWLXAJfQrJ4UiDgt_fJU5nb87bcyCwAs8vxFKJSSVlKdR5PylZwunCQKC15w; path=/; expires=Tue, 14-Jan-25 22:28:29 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=rUbZdVdVjxWKlmL6kkXgK_Z0AdoOKqK5tMgsdO9sKRg-1736891909685-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'9020e34088076dfd-LIM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-14 16:58:28,287 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-14 16:58:28,287 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-14 16:58:28,304 - DEBUG - receive_response_body.complete
+2025-01-14 16:58:28,304 - DEBUG - response_closed.started
+2025-01-14 16:58:28,304 - DEBUG - response_closed.complete
+2025-01-14 16:58:28,304 - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Jan 2025 21:58:29 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002'), ('openai-organization', 'user-jbyqjadhpy3uugoo7acih7ow'), ('openai-processing-ms', '81'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-776b696f78-psqkt'), ('x-envoy-upstream-service-time', '45'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999811'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '11ms'), ('x-request-id', 'req_b8e87f8ca48b2a9d265bc9e184c6ac5f'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=N5hpHXg6_s05kGl3FbUT.qV1pkn7VrOnmlKEVGMMo8A-1736891909-1.0.1.1-KQO.MVrlELHwX7G_IyBYxxYdLamWLXAJfQrJ4UiDgt_fJU5nb87bcyCwAs8vxFKJSSVlKdR5PylZwunCQKC15w; path=/; expires=Tue, 14-Jan-25 22:28:29 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=rUbZdVdVjxWKlmL6kkXgK_Z0AdoOKqK5tMgsdO9sKRg-1736891909685-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '9020e34088076dfd-LIM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-14 16:58:28,304 - DEBUG - request_id: req_b8e87f8ca48b2a9d265bc9e184c6ac5f
+2025-01-14 16:58:28,454 - DEBUG - Starting component PersistentLocalHnswSegment
+2025-01-14 16:58:52,398 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:58:52,398 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:58:52,398 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:58:52,398 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:58:52,398 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:58:52,398 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:58:52,694 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 16:58:53,093 - DEBUG - Starting component System
+2025-01-14 16:58:53,094 - DEBUG - Starting component Posthog
+2025-01-14 16:58:53,094 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 16:58:53,094 - DEBUG - Starting component SqliteDB
+2025-01-14 16:58:53,118 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 16:58:53,118 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 16:58:53,118 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 16:58:53,118 - DEBUG - Starting component LocalExecutor
+2025-01-14 16:58:53,118 - DEBUG - Starting component SegmentAPI
+2025-01-14 16:58:53,128 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 16:58:53,649 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 16:58:54,178 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 16:59:00,491 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:59:00,491 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:59:00,491 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:59:00,491 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:59:00,491 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:59:00,491 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:59:06,156 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:59:06,156 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:59:06,156 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:59:06,156 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:59:06,156 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:59:06,156 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:59:06,449 - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x000001872D278900>, 'json_data': {'input': [[34, 940, 1560, 658, 93106, 1239, 75, 10628, 409, 90745, 8968, 21075, 665, 658, 824, 6792, 30]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+2025-01-14 16:59:06,465 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2025-01-14 16:59:06,465 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-01-14 16:59:06,480 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001872D289F90>
+2025-01-14 16:59:06,480 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001872CF4B2F0> server_hostname='api.openai.com' timeout=None
+2025-01-14 16:59:06,496 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001872D27F490>
+2025-01-14 16:59:06,496 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-14 16:59:06,496 - DEBUG - send_request_headers.complete
+2025-01-14 16:59:06,496 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-14 16:59:06,496 - DEBUG - send_request_body.complete
+2025-01-14 16:59:06,496 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-14 16:59:07,181 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Jan 2025 21:59:08 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002'), (b'openai-organization', b'user-jbyqjadhpy3uugoo7acih7ow'), (b'openai-processing-ms', b'63'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-7f577c66cb-f22jc'), (b'x-envoy-upstream-service-time', b'39'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999982'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_3762aded622c6c385877d48bbcb7af38'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=HuxmHyIbNMwwg8PpyBsVEKUBb_pWYK54x8ouW71THOI-1736891948-1.0.1.1-AQSQmBSzc0YVqwApu0tv7Dft5Do68W6P3xoHuprDXa8BRZamLpgnE_vOowbbKu.0V0.gF4HGGzX8fZG_EkINlQ; path=/; expires=Tue, 14-Jan-25 22:29:08 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=H6dbFXWt7FFGJ33kIkMWXzCQGp64Y9i16SBHRUoOjDM-1736891948573-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'9020e4325df46dfd-LIM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-14 16:59:07,181 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-14 16:59:07,181 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-14 16:59:07,181 - DEBUG - receive_response_body.complete
+2025-01-14 16:59:07,181 - DEBUG - response_closed.started
+2025-01-14 16:59:07,181 - DEBUG - response_closed.complete
+2025-01-14 16:59:07,181 - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Jan 2025 21:59:08 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002'), ('openai-organization', 'user-jbyqjadhpy3uugoo7acih7ow'), ('openai-processing-ms', '63'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-7f577c66cb-f22jc'), ('x-envoy-upstream-service-time', '39'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999982'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '1ms'), ('x-request-id', 'req_3762aded622c6c385877d48bbcb7af38'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=HuxmHyIbNMwwg8PpyBsVEKUBb_pWYK54x8ouW71THOI-1736891948-1.0.1.1-AQSQmBSzc0YVqwApu0tv7Dft5Do68W6P3xoHuprDXa8BRZamLpgnE_vOowbbKu.0V0.gF4HGGzX8fZG_EkINlQ; path=/; expires=Tue, 14-Jan-25 22:29:08 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=H6dbFXWt7FFGJ33kIkMWXzCQGp64Y9i16SBHRUoOjDM-1736891948573-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '9020e4325df46dfd-LIM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-14 16:59:07,181 - DEBUG - request_id: req_3762aded622c6c385877d48bbcb7af38
+2025-01-14 16:59:07,255 - DEBUG - Starting component PersistentLocalHnswSegment
+2025-01-14 16:59:07,633 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 16:59:54,054 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:59:54,056 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:59:54,056 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:59:54,056 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 16:59:54,056 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 16:59:54,056 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 16:59:54,303 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 16:59:55,273 - DEBUG - Starting component System
+2025-01-14 16:59:55,273 - DEBUG - Starting component Posthog
+2025-01-14 16:59:55,273 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 16:59:55,273 - DEBUG - Starting component SqliteDB
+2025-01-14 16:59:55,305 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 16:59:55,305 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 16:59:55,305 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 16:59:55,305 - DEBUG - Starting component LocalExecutor
+2025-01-14 16:59:55,305 - DEBUG - Starting component SegmentAPI
+2025-01-14 16:59:55,326 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 16:59:55,818 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 16:59:56,401 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 17:00:01,319 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:00:01,328 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:00:01,328 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:00:01,329 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:00:01,329 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:00:01,329 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:00:01,889 - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x0000024AB931C860>, 'json_data': {'input': [[3258, 288, 35924, 665, 92959, 220]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+2025-01-14 17:00:01,915 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2025-01-14 17:00:01,915 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-01-14 17:00:05,006 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000024AB9A11B10>
+2025-01-14 17:00:05,007 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000024AB8FE6E70> server_hostname='api.openai.com' timeout=None
+2025-01-14 17:00:05,028 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000024AB9A10650>
+2025-01-14 17:00:05,028 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-14 17:00:05,028 - DEBUG - send_request_headers.complete
+2025-01-14 17:00:05,028 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-14 17:00:05,028 - DEBUG - send_request_body.complete
+2025-01-14 17:00:05,028 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-14 17:00:05,696 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Jan 2025 22:00:06 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002'), (b'openai-organization', b'user-jbyqjadhpy3uugoo7acih7ow'), (b'openai-processing-ms', b'139'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-776b696f78-qdgjq'), (b'x-envoy-upstream-service-time', b'67'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999993'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_b315928148b4f1946c212ec06415906d'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=9ATCi8F0z_53rANoaoqAYGY.94AmZP38nHujpKj_GaQ-1736892006-1.0.1.1-GNfXfQ6qaqf2YmzQgUvDFH7GWLE_WfFLMvjlhUpqFtkVOj1pZhNlc9HtfSG.wBV4KPf2gR8KZZGz70V3kdxDPw; path=/; expires=Tue, 14-Jan-25 22:30:06 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=J0rRMtg3Ym42PLiO2G2KWXWBn17wTJZkg7FIAsTjpUs-1736892006953-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'9020e5a02b1e144d-LIM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-14 17:00:05,697 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-14 17:00:05,699 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-14 17:00:05,701 - DEBUG - receive_response_body.complete
+2025-01-14 17:00:05,702 - DEBUG - response_closed.started
+2025-01-14 17:00:05,702 - DEBUG - response_closed.complete
+2025-01-14 17:00:05,702 - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Jan 2025 22:00:06 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002'), ('openai-organization', 'user-jbyqjadhpy3uugoo7acih7ow'), ('openai-processing-ms', '139'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-776b696f78-qdgjq'), ('x-envoy-upstream-service-time', '67'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999993'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_b315928148b4f1946c212ec06415906d'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=9ATCi8F0z_53rANoaoqAYGY.94AmZP38nHujpKj_GaQ-1736892006-1.0.1.1-GNfXfQ6qaqf2YmzQgUvDFH7GWLE_WfFLMvjlhUpqFtkVOj1pZhNlc9HtfSG.wBV4KPf2gR8KZZGz70V3kdxDPw; path=/; expires=Tue, 14-Jan-25 22:30:06 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=J0rRMtg3Ym42PLiO2G2KWXWBn17wTJZkg7FIAsTjpUs-1736892006953-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '9020e5a02b1e144d-LIM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-14 17:00:05,702 - DEBUG - request_id: req_b315928148b4f1946c212ec06415906d
+2025-01-14 17:00:05,767 - DEBUG - Starting component PersistentLocalHnswSegment
+2025-01-14 17:00:06,345 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 17:02:29,323 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:02:29,333 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:02:29,333 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:02:29,334 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:02:29,334 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:02:29,334 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:02:29,587 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 17:02:29,993 - DEBUG - Starting component System
+2025-01-14 17:02:29,993 - DEBUG - Starting component Posthog
+2025-01-14 17:02:29,993 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 17:02:29,993 - DEBUG - Starting component SqliteDB
+2025-01-14 17:02:30,009 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 17:02:30,009 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 17:02:30,009 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 17:02:30,009 - DEBUG - Starting component LocalExecutor
+2025-01-14 17:02:30,009 - DEBUG - Starting component SegmentAPI
+2025-01-14 17:02:30,025 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 17:02:30,525 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 17:02:31,074 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 17:02:53,414 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:02:53,414 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:02:53,415 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:02:53,415 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:02:53,415 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:02:53,415 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:02:54,238 - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x000002420B1B0A40>, 'json_data': {'input': [[80025, 25, 220, 15, 1252, 31345, 25, 220, 16, 1252, 31345, 25, 220, 17, 1881, 1252, 31345, 25, 220, 18, 1252, 31345, 25, 220, 19, 1252, 31345, 25, 220, 20, 1252, 31345, 25, 220, 21, 220, 1252, 31345, 25, 220, 22, 1252, 31345, 25, 220, 23, 1252, 31345, 25, 220, 24, 310, 1252, 31345, 25, 220, 605, 198, 286, 33278, 286, 452, 1308, 257, 15116, 29914, 256, 362, 23177, 926, 3204, 816, 452, 40600, 7157, 996, 16421, 1846, 996, 393, 1600, 46, 286, 423, 15259, 393, 29255, 71466, 415, 46947, 68321, 256, 90340, 37, 97785, 257, 27563, 793, 46, 73577, 42814, 33750, 198, 286, 33278, 692, 220, 16, 286, 33278, 220, 507, 85, 88151, 4563, 5325, 386, 727, 692, 220, 2166, 260, 220, 1490, 256, 220, 6726, 20304, 6083, 415, 9419, 981, 64, 286, 33278, 220, 220, 24597, 26067, 11057, 220, 78823, 12405, 23, 59131, 916, 198, 286, 33278, 692, 220, 17, 286, 33278, 386, 96528, 507, 85, 88151, 18866, 3444, 260, 220, 806, 260, 220, 1774, 256, 220, 15831, 21984, 3391, 286, 473, 29230, 286, 33278, 220, 220, 24597, 26067, 11057, 220, 78823, 12405, 23, 59131, 916]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+2025-01-14 17:02:54,644 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2025-01-14 17:02:54,644 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-01-14 17:02:54,957 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002420A73B350>
+2025-01-14 17:02:54,957 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002420AB47650> server_hostname='api.openai.com' timeout=None
+2025-01-14 17:02:54,974 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002420AF06E90>
+2025-01-14 17:02:54,974 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-14 17:02:54,974 - DEBUG - send_request_headers.complete
+2025-01-14 17:02:54,974 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-14 17:02:54,974 - DEBUG - send_request_body.complete
+2025-01-14 17:02:54,974 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-14 17:02:55,684 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Jan 2025 22:02:57 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002'), (b'openai-organization', b'user-jbyqjadhpy3uugoo7acih7ow'), (b'openai-processing-ms', b'47'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-b774c4b5c-pbnrt'), (b'x-envoy-upstream-service-time', b'37'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999811'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'11ms'), (b'x-request-id', b'req_593a6ec557d6d982c77f73800613bb9a'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=3M166aELXhKeQ.t9wcNvTwSyQArHat4SCHxgSHRUmQo-1736892177-1.0.1.1-BR1Gaqfkd0nh2s_Xac0Jj7C9CLC5QbpJ8ZesN_ZnjtokdpueVL4uCjtYquEnHq7vyKMqRLUMPUmXNdnFRgmSVg; path=/; expires=Tue, 14-Jan-25 22:32:57 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=Ap44zAindQFRtb6QPtkmpKW9hY5Rb5Bjn2Pijl20JRg-1736892177081-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'9020e9c66f246df8-LIM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-14 17:02:55,684 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-14 17:02:55,684 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-14 17:02:55,730 - DEBUG - receive_response_body.complete
+2025-01-14 17:02:55,730 - DEBUG - response_closed.started
+2025-01-14 17:02:55,730 - DEBUG - response_closed.complete
+2025-01-14 17:02:55,730 - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Jan 2025 22:02:57 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002'), ('openai-organization', 'user-jbyqjadhpy3uugoo7acih7ow'), ('openai-processing-ms', '47'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-b774c4b5c-pbnrt'), ('x-envoy-upstream-service-time', '37'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999811'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '11ms'), ('x-request-id', 'req_593a6ec557d6d982c77f73800613bb9a'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=3M166aELXhKeQ.t9wcNvTwSyQArHat4SCHxgSHRUmQo-1736892177-1.0.1.1-BR1Gaqfkd0nh2s_Xac0Jj7C9CLC5QbpJ8ZesN_ZnjtokdpueVL4uCjtYquEnHq7vyKMqRLUMPUmXNdnFRgmSVg; path=/; expires=Tue, 14-Jan-25 22:32:57 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=Ap44zAindQFRtb6QPtkmpKW9hY5Rb5Bjn2Pijl20JRg-1736892177081-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '9020e9c66f246df8-LIM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-14 17:02:55,730 - DEBUG - request_id: req_593a6ec557d6d982c77f73800613bb9a
+2025-01-14 17:02:55,825 - DEBUG - Starting component PersistentLocalHnswSegment
+2025-01-14 17:05:07,045 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:05:07,046 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:05:07,047 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:05:07,048 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:05:07,048 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:05:07,048 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:05:07,349 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 17:05:07,732 - DEBUG - Starting component System
+2025-01-14 17:05:07,733 - DEBUG - Starting component Posthog
+2025-01-14 17:05:07,733 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 17:05:07,733 - DEBUG - Starting component SqliteDB
+2025-01-14 17:05:07,760 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 17:05:07,761 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 17:05:07,761 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 17:05:07,761 - DEBUG - Starting component LocalExecutor
+2025-01-14 17:05:07,761 - DEBUG - Starting component SegmentAPI
+2025-01-14 17:05:07,772 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 17:05:08,282 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 17:05:08,815 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 17:06:00,127 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:06:00,127 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:06:00,127 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:06:00,127 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:06:00,127 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:06:00,128 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:26:12,628 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:26:12,629 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:26:12,629 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:26:12,629 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:26:12,629 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:26:12,629 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:26:12,881 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 17:26:13,340 - DEBUG - Starting component System
+2025-01-14 17:26:13,340 - DEBUG - Starting component Posthog
+2025-01-14 17:26:13,341 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 17:26:13,341 - DEBUG - Starting component SqliteDB
+2025-01-14 17:26:13,361 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 17:26:13,361 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 17:26:13,361 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 17:26:13,361 - DEBUG - Starting component LocalExecutor
+2025-01-14 17:26:13,361 - DEBUG - Starting component SegmentAPI
+2025-01-14 17:26:13,381 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 17:26:13,889 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 17:26:14,411 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 17:26:17,991 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:26:17,991 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:26:17,991 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:26:17,991 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 17:26:17,991 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 17:26:17,991 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 17:26:18,280 - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x0000022F07EB8900>, 'json_data': {'input': [[34, 940, 1560, 658, 93106, 1239, 75, 10628, 409, 90745, 8968, 21075, 665, 658, 824, 6792]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+2025-01-14 17:26:18,299 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2025-01-14 17:26:18,299 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-01-14 17:26:18,602 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000022F07E3CBD0>
+2025-01-14 17:26:18,602 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000022F07B86E70> server_hostname='api.openai.com' timeout=None
+2025-01-14 17:26:18,617 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000022F07CC8F10>
+2025-01-14 17:26:18,617 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-14 17:26:18,618 - DEBUG - send_request_headers.complete
+2025-01-14 17:26:18,618 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-14 17:26:18,619 - DEBUG - send_request_body.complete
+2025-01-14 17:26:18,619 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-14 17:26:19,854 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Jan 2025 22:26:21 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002'), (b'openai-organization', b'user-jbyqjadhpy3uugoo7acih7ow'), (b'openai-processing-ms', b'65'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-78fb57c55c-87v24'), (b'x-envoy-upstream-service-time', b'42'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999984'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_b3c7f8aef42ae858afe8b3a0e83e65b1'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=tN9IqOqryMO1fGekZOuhwIZp_y3.YssHLAf230.EnrM-1736893581-1.0.1.1-QoXQDb0DAMzVXohty8I4PfcrHWW218kODkQg2_3eH.D8sGHhhtVGoKQfNEKWRqG89H60.1P0P5a0SsxSlIUP0Q; path=/; expires=Tue, 14-Jan-25 22:56:21 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=Wbbv2Fe03fBC08_30I96LK6aNA3Hj9D8UMnMkDZKTtI-1736893581261-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'90210c0b2fa76df7-LIM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-14 17:26:19,854 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-14 17:26:19,854 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-14 17:26:19,872 - DEBUG - receive_response_body.complete
+2025-01-14 17:26:19,872 - DEBUG - response_closed.started
+2025-01-14 17:26:19,873 - DEBUG - response_closed.complete
+2025-01-14 17:26:19,873 - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Jan 2025 22:26:21 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002'), ('openai-organization', 'user-jbyqjadhpy3uugoo7acih7ow'), ('openai-processing-ms', '65'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-78fb57c55c-87v24'), ('x-envoy-upstream-service-time', '42'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999984'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_b3c7f8aef42ae858afe8b3a0e83e65b1'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=tN9IqOqryMO1fGekZOuhwIZp_y3.YssHLAf230.EnrM-1736893581-1.0.1.1-QoXQDb0DAMzVXohty8I4PfcrHWW218kODkQg2_3eH.D8sGHhhtVGoKQfNEKWRqG89H60.1P0P5a0SsxSlIUP0Q; path=/; expires=Tue, 14-Jan-25 22:56:21 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=Wbbv2Fe03fBC08_30I96LK6aNA3Hj9D8UMnMkDZKTtI-1736893581261-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '90210c0b2fa76df7-LIM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-14 17:26:19,873 - DEBUG - request_id: req_b3c7f8aef42ae858afe8b3a0e83e65b1
+2025-01-14 17:26:19,965 - DEBUG - Starting component PersistentLocalHnswSegment
+2025-01-14 17:26:20,168 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:17:00,296 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:17:00,313 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:17:00,313 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:17:00,313 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:17:00,313 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:17:00,313 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:17:01,633 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 18:17:02,460 - DEBUG - Starting component System
+2025-01-14 18:17:02,460 - DEBUG - Starting component Posthog
+2025-01-14 18:17:02,460 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 18:17:02,460 - DEBUG - Starting component SqliteDB
+2025-01-14 18:17:02,523 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 18:17:02,538 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 18:17:02,538 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 18:17:02,538 - DEBUG - Starting component LocalExecutor
+2025-01-14 18:17:02,538 - DEBUG - Starting component SegmentAPI
+2025-01-14 18:17:02,560 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:17:03,043 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 18:17:03,562 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:17:18,635 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:17:18,635 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:17:18,635 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:17:18,635 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:17:18,646 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:17:18,647 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:17:19,226 - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x0000023930304EA0>, 'json_data': {'input': [[34, 940, 1560, 658, 93106, 1239, 75, 10628, 409, 90745, 8968, 21075, 665, 658, 824, 6792, 30]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+2025-01-14 18:17:19,272 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2025-01-14 18:17:19,272 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-01-14 18:17:19,343 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000239302582D0>
+2025-01-14 18:17:19,344 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000023930010170> server_hostname='api.openai.com' timeout=None
+2025-01-14 18:17:19,357 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002393022C5D0>
+2025-01-14 18:17:19,357 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-14 18:17:19,358 - DEBUG - send_request_headers.complete
+2025-01-14 18:17:19,358 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-14 18:17:19,358 - DEBUG - send_request_body.complete
+2025-01-14 18:17:19,359 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-14 18:17:20,374 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Jan 2025 23:17:21 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002'), (b'openai-organization', b'user-jbyqjadhpy3uugoo7acih7ow'), (b'openai-processing-ms', b'81'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-5c565479c5-rktnw'), (b'x-envoy-upstream-service-time', b'57'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999982'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_23e41802055f2de4b4e68dcfa2855a7f'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=YY7yiSP8tFNxJxR5HxpX_iXFxT1Nfdx7mpEUHWW3bEs-1736896641-1.0.1.1-2EseaV16TQl9ZKdmoNd4eBCCeN.i9uvY1AkJl5TTW_owBp_K81D3Ey58ihOxbPsa4lnsatkCZSXLRgtEXkhyBQ; path=/; expires=Tue, 14-Jan-25 23:47:21 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=Rn09Wvb41Peu92EkSxqIinPPfIna41fXpQ6muXHwAr4-1736896641806-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'902156c4ea416df2-LIM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-14 18:17:20,374 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-14 18:17:20,374 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-14 18:17:20,390 - DEBUG - receive_response_body.complete
+2025-01-14 18:17:20,390 - DEBUG - response_closed.started
+2025-01-14 18:17:20,390 - DEBUG - response_closed.complete
+2025-01-14 18:17:20,390 - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Jan 2025 23:17:21 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002'), ('openai-organization', 'user-jbyqjadhpy3uugoo7acih7ow'), ('openai-processing-ms', '81'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-5c565479c5-rktnw'), ('x-envoy-upstream-service-time', '57'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999982'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '1ms'), ('x-request-id', 'req_23e41802055f2de4b4e68dcfa2855a7f'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=YY7yiSP8tFNxJxR5HxpX_iXFxT1Nfdx7mpEUHWW3bEs-1736896641-1.0.1.1-2EseaV16TQl9ZKdmoNd4eBCCeN.i9uvY1AkJl5TTW_owBp_K81D3Ey58ihOxbPsa4lnsatkCZSXLRgtEXkhyBQ; path=/; expires=Tue, 14-Jan-25 23:47:21 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=Rn09Wvb41Peu92EkSxqIinPPfIna41fXpQ6muXHwAr4-1736896641806-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '902156c4ea416df2-LIM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-14 18:17:20,390 - DEBUG - request_id: req_23e41802055f2de4b4e68dcfa2855a7f
+2025-01-14 18:17:20,494 - DEBUG - Starting component PersistentLocalHnswSegment
+2025-01-14 18:17:20,910 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:31:05,007 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:05,008 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:05,008 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:05,008 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:05,008 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:05,009 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:05,217 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 18:31:05,495 - DEBUG - Starting component System
+2025-01-14 18:31:05,496 - DEBUG - Starting component Posthog
+2025-01-14 18:31:05,496 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 18:31:05,496 - DEBUG - Starting component SqliteDB
+2025-01-14 18:31:05,514 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 18:31:05,514 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 18:31:05,514 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 18:31:05,514 - DEBUG - Starting component LocalExecutor
+2025-01-14 18:31:05,514 - DEBUG - Starting component SegmentAPI
+2025-01-14 18:31:05,514 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:31:06,032 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 18:31:06,537 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:31:14,725 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:14,725 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:14,725 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:14,725 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:14,725 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:14,725 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:14,742 - ERROR - Memoria insuficiente para procesar la solicitud. Cierre otras aplicaciones e intente nuevamente.
+2025-01-14 18:31:28,137 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:28,137 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:28,137 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:28,137 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:28,137 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:28,138 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:28,218 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:31:28,575 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:31:30,625 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:30,625 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:30,625 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:30,625 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:30,625 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:30,625 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:30,669 - ERROR - Memoria insuficiente para procesar la solicitud. Cierre otras aplicaciones e intente nuevamente.
+2025-01-14 18:31:37,078 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:37,078 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:37,078 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:37,078 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:37,078 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:37,079 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:37,881 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:37,881 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:37,881 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:37,882 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:31:37,882 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:31:37,882 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:31:37,954 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:31:38,385 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:32:49,364 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:32:49,368 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:32:49,368 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:32:49,368 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:32:49,368 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:32:49,368 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:32:49,744 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:32:50,867 - DEBUG - Resetting dropped connection: us.i.posthog.com
+2025-01-14 18:32:51,383 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:33:47,796 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:33:47,802 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:33:47,802 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:33:47,803 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:33:47,803 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:33:47,804 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:33:48,233 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:33:50,269 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:34:51,887 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:34:51,893 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:34:51,894 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:34:51,894 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:34:51,895 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:34:51,895 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:34:52,525 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:34:53,583 - DEBUG - Resetting dropped connection: us.i.posthog.com
+2025-01-14 18:34:54,079 - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+2025-01-14 18:39:39,402 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:39:39,402 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:39:39,402 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:39:39,402 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:39:39,402 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:39:39,402 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:39:39,876 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 18:39:40,387 - DEBUG - Starting component System
+2025-01-14 18:39:40,387 - DEBUG - Starting component Posthog
+2025-01-14 18:39:40,387 - DEBUG - Starting component OpenTelemetryClient
+2025-01-14 18:39:40,387 - DEBUG - Starting component SqliteDB
+2025-01-14 18:39:40,642 - DEBUG - Starting component SimpleQuotaEnforcer
+2025-01-14 18:39:40,642 - DEBUG - Starting component SimpleRateLimitEnforcer
+2025-01-14 18:39:40,642 - DEBUG - Starting component LocalSegmentManager
+2025-01-14 18:39:40,642 - DEBUG - Starting component LocalExecutor
+2025-01-14 18:39:40,642 - DEBUG - Starting component SegmentAPI
+2025-01-14 18:39:40,672 - DEBUG - Collection langchain already exists, returning existing collection.
+2025-01-14 18:39:41,164 - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+2025-01-14 18:39:41,444 - INFO - Backing off send_request(...) for 0.2s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002240D913590>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2025-01-14 18:39:41,611 - DEBUG - Starting new HTTPS connection (2): us.i.posthog.com:443
+2025-01-14 18:39:41,616 - INFO - Backing off send_request(...) for 2.0s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002240DD57210>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2025-01-14 18:39:43,619 - DEBUG - Starting new HTTPS connection (3): us.i.posthog.com:443
+2025-01-14 18:39:43,624 - INFO - Backing off send_request(...) for 1.5s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002240DD9C5D0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2025-01-14 18:39:45,094 - DEBUG - Starting new HTTPS connection (4): us.i.posthog.com:443
+2025-01-14 18:39:45,094 - ERROR - Giving up send_request(...) after 4 tries (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002240DD9D850>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2025-01-14 18:39:45,406 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:39:45,406 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:39:45,406 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:39:45,406 - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 18:39:45,406 - DEBUG - STREAM b'pHYs' 41 9
+2025-01-14 18:39:45,406 - DEBUG - STREAM b'IDAT' 62 8192
+2025-01-14 18:39:45,436 - ERROR - Memoria insuficiente para procesar la solicitud. Cierre otras aplicaciones e intente nuevamente.
