@@ -198,7 +198,7 @@ if submit_button and query:
 
                 except Exception as e:
                     log_and_display_error(f"Error al realizar la consulta: {e}\n{traceback.format_exc()}")
-        else:
-            log_and_display_error("La base de datos no está cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
+            else:
+                log_and_display_error("La base de datos no está cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
         else:
             st.warning("La pregunta ya fue enviada.")**
