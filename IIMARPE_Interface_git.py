@@ -17,14 +17,14 @@ import time
 import sys
 
 #SQLITE
-# Importar sqlite3 desde pysqlite3 si está disponible
+# Importar sqlite3 desde pysqlite3 si estÃ¡ disponible
 try:
     from pysqlite3 import dbapi2 as sqlite3
     sys.modules["sqlite3"] = sqlite3
 except ImportError:
     import sqlite3  # Fallback al sqlite3 predeterminado
     
-# Configuración de logging
+# ConfiguraciÃ³n de logging
 logging.basicConfig(
     filename="debug.log",
     level=logging.DEBUG,
@@ -42,10 +42,10 @@ def check_system_resources():
         return False
     return True
 
-# Configuración de la API de OpenAI
+# ConfiguraciÃ³n de la API de OpenAI
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
-# Configuración de la página de Streamlit
+# ConfiguraciÃ³n de la pÃ¡gina de Streamlit
 st.set_page_config(page_title="IA Chat", layout="wide")
 
 # Mostrar el logotipo en la barra lateral
@@ -56,7 +56,7 @@ with st.sidebar:
     else:
         st.warning("Logotipo no encontrado en la ruta especificada.")
 
-# Mostrar el título
+# Mostrar el tÃ­tulo
 st.title("CHAT IMARPE")
 
 # Inicializar el estado si no existe
@@ -87,14 +87,14 @@ except Exception as e:
     log_and_display_error(f"Error al cargar la base de datos: {e}\n{traceback.format_exc()}")
 
 # Procesar nuevos archivos si se suben
-uploaded_files = st.sidebar.file_uploader("Sube tus documentos aquí:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
+uploaded_files = st.sidebar.file_uploader("Sube tus documentos aquÃ­:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
 if uploaded_files and not st.session_state.files_processed:
     all_docs = []
-    max_file_size_mb = 20  # Límite de 20 MB
+    max_file_size_mb = 20  # LÃ­mite de 20 MB
     for uploaded_file in uploaded_files:
         try:
             if uploaded_file.size > max_file_size_mb * 1024 * 1024:
-                log_and_display_error(f"El archivo {uploaded_file.name} excede el tamaño máximo permitido de {max_file_size_mb} MB.")
+                log_and_display_error(f"El archivo {uploaded_file.name} excede el tamaÃ±o mÃ¡ximo permitido de {max_file_size_mb} MB.")
                 continue
 
             if uploaded_file.name.endswith(".pdf"):
@@ -107,15 +107,14 @@ if uploaded_files and not st.session_state.files_processed:
                     log_and_display_error(f"Error al procesar PDF {uploaded_file.name}: {e}")
             elif uploaded_file.name.endswith((".xlsx", ".xls")):
                 try:
-                    # Leer el archivo Excel completo
-                    df = pd.read_excel(uploaded_file)
+                    chunk_size = 500  # NÃºmero de filas por chunk
+                    total_rows = pd.read_excel(uploaded_file).shape[0]  # Calcular nÃºmero total de filas
 
-                    # Crear descripciones dinámicas para cada fila
-                    for index, row in df.iterrows():
-                        # Convertir toda la fila en una descripción basada en todas las columnas
-                        row_data = ", ".join([f"{col}: {row[col]}" for col in df.columns if not pd.isna(row[col])])
-                        description = f"Registro {index + 1}: {row_data}."
-                        document = Document(page_content=description, metadata={"source": uploaded_file.name})
+                    for start_row in range(0, total_rows, chunk_size):
+                        header = 0 if start_row == 0 else None  # Incluir encabezados solo en la primera iteraciÃ³n
+                        chunk = pd.read_excel(uploaded_file, skiprows=start_row, nrows=chunk_size, header=header)
+                        text = chunk.to_string(index=False, header=(start_row == 0))
+                        document = Document(page_content=text, metadata={"source": uploaded_file.name})
                         all_docs.append(document)
                         st.write(f"Procesando chunk desde fila {start_row}")
                 except Exception as e:
@@ -131,11 +130,11 @@ if uploaded_files and not st.session_state.files_processed:
         try:
             if st.session_state.vectorstore:
                 st.session_state.vectorstore.add_documents(splits)
-                st.session_state.vectorstore.persist()  # Método correcto para persistir los datos
-                st.success("Nuevos documentos procesados y añadidos a la base de datos.")
+                st.session_state.vectorstore.persist()  # MÃ©todo correcto para persistir los datos
+                st.success("Nuevos documentos procesados y aÃ±adidos a la base de datos.")
                 st.session_state.files_processed = True
             else:
-                log_and_display_error("Vectorstore no está inicializado.")
+                log_and_display_error("Vectorstore no estÃ¡ inicializado.")
         except Exception as e:
             log_and_display_error(f"Error al actualizar la base de datos: {e}\n{traceback.format_exc()}")
     else:
@@ -152,7 +151,7 @@ with st.container():
     with chat_placeholder.container():
         for i, chat in enumerate(st.session_state.chat_history):
             role, msg = chat
-            # Generar una clave única usando el índice y un timestamp
+            # Generar una clave Ãºnica usando el Ã­ndice y un timestamp
             key = f"{role}_{i}_{int(time.time() * 1000)}"
             if role == "human":
                 message(msg, is_user=True, key=key)
@@ -189,7 +188,7 @@ if submit_button and query:
                     with chat_placeholder.container():
                         for i, chat in enumerate(st.session_state.chat_history):
                             role, msg = chat
-                            # Generar una clave única usando el índice y un timestamp
+                            # Generar una clave Ãºnica usando el Ã­ndice y un timestamp
                             key = f"{role}_{i}_{int(time.time() * 1000)}"
                             if role == "human":
                                 message(msg, is_user=True, key=key)
@@ -198,7 +197,7 @@ if submit_button and query:
 
                 except Exception as e:
                     log_and_display_error(f"Error al realizar la consulta: {e}\n{traceback.format_exc()}")
-            else:
-                log_and_display_error("La base de datos no está cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
-     else:
-         st.warning("La pregunta ya fue enviada.")**
+        else:
+            log_and_display_error("La base de datos no estÃ¡ cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
+    else:
+        st.warning("La pregunta ya fue enviada.")
