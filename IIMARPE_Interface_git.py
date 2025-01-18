@@ -72,35 +72,34 @@ if "files_processed" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
-# Configurar Chroma con persistencia
 def initialize_chroma():
-    from chromadb.config import Settings
-    from chromadb import Client
     try:
-        client = Client(Settings(
-            persist_directory="./vectordb",
-            chroma_db_impl="sqlite",
-        ))
-        # Forzar la inicialización verificando los tenants
-        try:
-            tenant = client._admin_client.get_tenant("default_tenant")
-        except Exception:
-            # Si no existe, crea un nuevo tenant o maneja la excepción
-            client._admin_client.create_tenant(name="default_tenant")
+        # Configuración para evitar conflictos
+        persist_directory = "./vectordb"
+        client = Client(
+            Settings(
+                chroma_db_impl="duckdb+parquet",
+                persist_directory=persist_directory,
+                anonymized_telemetry=False
+            )
+        )
         return client
     except Exception as e:
         raise ValueError(f"Error inicializando la base de datos Chroma: {e}")
 
-# Cargar la base de datos vectorial al inicio si existe
+# Inicializa la base de datos Chroma
 try:
-    if st.session_state.vectorstore is None:
-        client = initialize_chroma()
-        st.session_state.vectorstore = Chroma(
-            client=client,
-            persist_directory="./vectordb",
-            embedding_function=OpenAIEmbeddings()
-        )
-        st.success("Base de datos cargada exitosamente.")
+    if "vectorstore" in st.session_state and st.session_state.vectorstore is not None:
+        st.session_state.vectorstore.close()  # Cierra cualquier instancia previa
+        del st.session_state.vectorstore
+
+    client = initialize_chroma()
+    st.session_state.vectorstore = Chroma(
+        client=client,
+        persist_directory="./vectordb",
+        embedding_function=OpenAIEmbeddings()
+    )
+    st.success("Base de datos cargada exitosamente.")
 except Exception as e:
     log_and_display_error(f"Error al cargar la base de datos: {e}\n{traceback.format_exc()}")
 
