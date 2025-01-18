@@ -16,7 +16,6 @@ import streamlit as st
 import pdfplumber
 import time
 import sys
-import chromadb
 
 #SQLITE
 # Importar sqlite3 desde pysqlite3 si estÃ¡ disponible
@@ -73,9 +72,6 @@ if "files_processed" not in st.session_state:
 
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
-
-#Solucion a no se encuentra la carpeta tenat
-chromadb.api.client.SharedSystemClient.clear_system_cache()
 
 # Cargar la base de datos vectorial al inicio si existe
 try:
