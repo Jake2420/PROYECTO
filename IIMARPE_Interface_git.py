@@ -107,14 +107,15 @@ if uploaded_files and not st.session_state.files_processed:
                     log_and_display_error(f"Error al procesar PDF {uploaded_file.name}: {e}")
             elif uploaded_file.name.endswith((".xlsx", ".xls")):
                 try:
-                    chunk_size = 500  # Número de filas por chunk
-                    total_rows = pd.read_excel(uploaded_file).shape[0]  # Calcular número total de filas
+                    # Leer el archivo Excel completo
+                    df = pd.read_excel(uploaded_file)
 
-                    for start_row in range(0, total_rows, chunk_size):
-                        header = 0 if start_row == 0 else None  # Incluir encabezados solo en la primera iteración
-                        chunk = pd.read_excel(uploaded_file, skiprows=start_row, nrows=chunk_size, header=header)
-                        text = chunk.to_string(index=False, header=(start_row == 0))
-                        document = Document(page_content=text, metadata={"source": uploaded_file.name})
+                    # Crear descripciones dinámicas para cada fila
+                    for index, row in df.iterrows():
+                        # Convertir toda la fila en una descripción basada en todas las columnas
+                        row_data = ", ".join([f"{col}: {row[col]}" for col in df.columns if not pd.isna(row[col])])
+                        description = f"Registro {index + 1}: {row_data}."
+                        document = Document(page_content=description, metadata={"source": uploaded_file.name})
                         all_docs.append(document)
                         st.write(f"Procesando chunk desde fila {start_row}")
                 except Exception as e:
