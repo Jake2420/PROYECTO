@@ -11,6 +11,7 @@ from langchain.chains import ConversationalRetrievalChain
 from streamlit_chat import message
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
+from chromadb import Client
 import streamlit as st
 import pdfplumber
 import time
@@ -79,7 +80,6 @@ chromadb.api.client.SharedSystemClient.clear_system_cache()
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-        from chromadb import Client
         client = Client()
         st.session_state.vectorstore = Chroma(
             client=client,
