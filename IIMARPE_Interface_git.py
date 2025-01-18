@@ -15,6 +15,7 @@ import streamlit as st
 import pdfplumber
 import time
 import sys
+import chromadb
 
 #SQLITE
 # Importar sqlite3 desde pysqlite3 si estÃ¡ disponible
