@@ -11,6 +11,8 @@ from langchain.chains import ConversationalRetrievalChain
 from streamlit_chat import message
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
+from chromadb.config import Settings
+from chromadb import Client
 import streamlit as st
 import pdfplumber
 import time
@@ -71,12 +73,27 @@ if "files_processed" not in st.session_state:
 
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
+# Configurar Chroma con persistencia
+def initialize_chroma():
+    try:
+        client = Client(Settings(
+            persist_directory="./vectordb",
+            chroma_db_impl="sqlite",
+        ))
+        # Forzar la inicialización verificando los tenants
+        try:
+            tenant = client._admin_client.get_tenant("default_tenant")
+        except Exception:
+            # Si no existe, crea un nuevo tenant o maneja la excepción
+            client._admin_client.create_tenant(name="default_tenant")
+        return client
+    except Exception as e:
+        raise ValueError(f"Error inicializando la base de datos Chroma: {e}")
 
-# Cargar la base de datos vectorial al inicio si existe
+# Llama a esta función para inicializar Chroma
 try:
     if st.session_state.vectorstore is None:
-        from chromadb import Client
-        client = Client()
+        client = initialize_chroma()
         st.session_state.vectorstore = Chroma(
             client=client,
             persist_directory="./vectordb",
