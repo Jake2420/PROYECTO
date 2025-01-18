@@ -11,21 +11,20 @@ from langchain.chains import ConversationalRetrievalChain
 from streamlit_chat import message
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
-from chromadb import Client
 import streamlit as st
 import pdfplumber
 import time
 import sys
 
-#SQLITE
-# Importar sqlite3 desde pysqlite3 si estÃ¡ disponible
+# SQLITE
+# Importar sqlite3 desde pysqlite3 si está disponible
 try:
     from pysqlite3 import dbapi2 as sqlite3
     sys.modules["sqlite3"] = sqlite3
 except ImportError:
     import sqlite3  # Fallback al sqlite3 predeterminado
-    
-# ConfiguraciÃ³n de logging
+
+# Configuración de logging
 logging.basicConfig(
     filename="debug.log",
     level=logging.DEBUG,
@@ -43,10 +42,10 @@ def check_system_resources():
         return False
     return True
 
-# ConfiguraciÃ³n de la API de OpenAI
+# Configuración de la API de OpenAI
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
-# ConfiguraciÃ³n de la pÃ¡gina de Streamlit
+# Configuración de la página de Streamlit
 st.set_page_config(page_title="IA Chat", layout="wide")
 
 # Mostrar el logotipo en la barra lateral
@@ -57,7 +56,7 @@ with st.sidebar:
     else:
         st.warning("Logotipo no encontrado en la ruta especificada.")
 
-# Mostrar el tÃ­tulo
+# Mostrar el título
 st.title("CHAT IMARPE")
 
 # Inicializar el estado si no existe
@@ -73,10 +72,29 @@ if "files_processed" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
+# Configurar Chroma con persistencia
+def initialize_chroma():
+    from chromadb.config import Settings
+    from chromadb import Client
+    try:
+        client = Client(Settings(
+            persist_directory="./vectordb",
+            chroma_db_impl="sqlite",
+        ))
+        # Forzar la inicialización verificando los tenants
+        try:
+            tenant = client._admin_client.get_tenant("default_tenant")
+        except Exception:
+            # Si no existe, crea un nuevo tenant o maneja la excepción
+            client._admin_client.create_tenant(name="default_tenant")
+        return client
+    except Exception as e:
+        raise ValueError(f"Error inicializando la base de datos Chroma: {e}")
+
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-        client = Client()
+        client = initialize_chroma()
         st.session_state.vectorstore = Chroma(
             client=client,
             persist_directory="./vectordb",
@@ -87,14 +105,14 @@ except Exception as e:
     log_and_display_error(f"Error al cargar la base de datos: {e}\n{traceback.format_exc()}")
 
 # Procesar nuevos archivos si se suben
-uploaded_files = st.sidebar.file_uploader("Sube tus documentos aquÃ­:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
+uploaded_files = st.sidebar.file_uploader("Sube tus documentos aquí:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
 if uploaded_files and not st.session_state.files_processed:
     all_docs = []
-    max_file_size_mb = 20  # LÃ­mite de 20 MB
+    max_file_size_mb = 20  # Límite de 20 MB
     for uploaded_file in uploaded_files:
         try:
             if uploaded_file.size > max_file_size_mb * 1024 * 1024:
-                log_and_display_error(f"El archivo {uploaded_file.name} excede el tamaÃ±o mÃ¡ximo permitido de {max_file_size_mb} MB.")
+                log_and_display_error(f"El archivo {uploaded_file.name} excede el tamaño máximo permitido de {max_file_size_mb} MB.")
                 continue
 
             if uploaded_file.name.endswith(".pdf"):
@@ -110,14 +128,13 @@ if uploaded_files and not st.session_state.files_processed:
                     # Leer el archivo Excel completo
                     df = pd.read_excel(uploaded_file)
 
-                    # Crear descripciones dinÃ¡micas para cada fila
+                    # Crear descripciones dinámicas para cada fila
                     for index, row in df.iterrows():
-                        # Convertir toda la fila en una descripciÃ³n basada en todas las columnas
+                        # Convertir toda la fila en una descripción basada en todas las columnas
                         row_data = ", ".join([f"{col}: {row[col]}" for col in df.columns if not pd.isna(row[col])])
                         description = f"Registro {index + 1}: {row_data}."
                         document = Document(page_content=description, metadata={"source": uploaded_file.name})
                         all_docs.append(document)
-                        st.write(f"Procesando chunk desde fila {start_row}")
                 except Exception as e:
                     log_and_display_error(f"Error al procesar Excel {uploaded_file.name}: {e}")
         except Exception as e:
@@ -131,11 +148,11 @@ if uploaded_files and not st.session_state.files_processed:
         try:
             if st.session_state.vectorstore:
                 st.session_state.vectorstore.add_documents(splits)
-                st.session_state.vectorstore.persist()  # MÃ©todo correcto para persistir los datos
-                st.success("Nuevos documentos procesados y aÃ±adidos a la base de datos.")
+                st.session_state.vectorstore.persist()  # Método correcto para persistir los datos
+                st.success("Nuevos documentos procesados y añadidos a la base de datos.")
                 st.session_state.files_processed = True
             else:
-                log_and_display_error("Vectorstore no estÃ¡ inicializado.")
+                log_and_display_error("Vectorstore no está inicializado.")
         except Exception as e:
             log_and_display_error(f"Error al actualizar la base de datos: {e}\n{traceback.format_exc()}")
     else:
@@ -152,7 +169,7 @@ with st.container():
     with chat_placeholder.container():
         for i, chat in enumerate(st.session_state.chat_history):
             role, msg = chat
-            # Generar una clave Ãºnica usando el Ã­ndice y un timestamp
+            # Generar una clave única usando el índice y un timestamp
             key = f"{role}_{i}_{int(time.time() * 1000)}"
             if role == "human":
                 message(msg, is_user=True, key=key)
@@ -189,7 +206,7 @@ if submit_button and query:
                     with chat_placeholder.container():
                         for i, chat in enumerate(st.session_state.chat_history):
                             role, msg = chat
-                            # Generar una clave Ãºnica usando el Ã­ndice y un timestamp
+                            # Generar una clave única usando el índice y un timestamp
                             key = f"{role}_{i}_{int(time.time() * 1000)}"
                             if role == "human":
                                 message(msg, is_user=True, key=key)
@@ -199,6 +216,7 @@ if submit_button and query:
                 except Exception as e:
                     log_and_display_error(f"Error al realizar la consulta: {e}\n{traceback.format_exc()}")
         else:
-            log_and_display_error("La base de datos no estÃ¡ cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
+            log_and_display_error("La base de datos no está cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
     else:
         st.warning("La pregunta ya fue enviada.")
+
