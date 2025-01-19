@@ -12,8 +12,9 @@ from streamlit_chat import message
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
 from chromadb.config import Settings
+from chromadb.config import Settings
+from chromadb import Client
 import streamlit as st
-import chromadb
 import pdfplumber
 import time
 import sys
@@ -77,13 +78,11 @@ if "last_query" not in st.session_state:
 
 def initialize_chroma():
     try:
-        # Configuración para evitar conflictos
-        persist_directory = "./vectordb"
         client = Client(
             Settings(
-                chroma_db_impl="duckdb+parquet",
-                persist_directory=persist_directory,
-                anonymized_telemetry=False
+                chroma_db_impl="duckdb+parquet",  # Usa DuckDB en lugar de SQLite
+                persist_directory="./vectordb",
+                anonymized_telemetry=False,
             )
         )
         return client
