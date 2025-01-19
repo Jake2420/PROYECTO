@@ -29,7 +29,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
   #  sys.modules["sqlite3"] = sqlite3
 #except ImportError:
  #   import sqlite3  # Fallback al sqlite3 predeterminado
-# ConfiguraciÃ³n de logging
+# Configuracion de logging
 logging.basicConfig(
     filename="debug.log",
     level=logging.DEBUG,
@@ -47,7 +47,7 @@ def check_system_resources():
         return False
     return True
 
-# ConfiguraciÃ³n de la API de OpenAI
+# Configuracion de la API de OpenAI
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # ConfiguraciÃ³n de la pÃ¡gina de Streamlit
@@ -77,16 +77,19 @@ if "files_processed" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
-# Cargar la base de datos vectorial al inicio si existe
+## Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
+        from chromadb import Client
+        client = Client()
         st.session_state.vectorstore = Chroma(
+            client=client,
             persist_directory="./vectordb",
             embedding_function=OpenAIEmbeddings()
         )
-        st.success("Base de datos vectorial inicializada correctamente.")
+        st.success("Base de datos cargada exitosamente.")
 except Exception as e:
-    log_and_display_error(f"Error al inicializar Vectorstore: {e}\n{traceback.format_exc()}")
+    log_and_display_error(f"Error al cargar la base de datos: {e}\n{traceback.format_exc()}")
 
 # Procesar nuevos archivos si se suben
 uploaded_files = st.sidebar.file_uploader("Sube tus documentos aqui­:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
