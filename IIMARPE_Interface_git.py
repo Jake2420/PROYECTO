@@ -11,9 +11,6 @@ from langchain.chains import ConversationalRetrievalChain
 from streamlit_chat import message
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
-from chromadb.config import Settings
-from chromadb.config import Settings
-from chromadb import Client
 import streamlit as st
 import pdfplumber
 import time
