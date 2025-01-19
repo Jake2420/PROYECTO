@@ -29,6 +29,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
   #  sys.modules["sqlite3"] = sqlite3
 #except ImportError:
  #   import sqlite3  # Fallback al sqlite3 predeterminado
+
 # Configuración de logging
 logging.basicConfig(
     filename="debug.log",
@@ -78,20 +79,19 @@ if "last_query" not in st.session_state:
 
 # Cargar la base de datos vectorial al inicio si existe
 try:
-    persist_directory = os.path.join(os.path.dirname(__file__), "vectordb")
-    from chromadb.config import Settings
-    client = chromadb.Client(Settings(
-        chroma_db_impl="duckdb+parquet",
-        persist_directory=persist_directory
-    ))
-
     if st.session_state.vectorstore is None:
+        client_settings = Settings(
+            persist_directory="./vectordb",
+            chroma_db_impl="duckdb+parquet",
+            anonymized_telemetry=False
+        )
+        client = chromadb.Client(client_settings)
         st.session_state.vectorstore = Chroma(
             client=client,
-            persist_directory=persist_directory,
+            persist_directory="./vectordb",
             embedding_function=OpenAIEmbeddings()
         )
-        st.success("Base de datos vectorial inicializada correctamente.")
+        st.success("Base de datos cargada exitosamente.")
 except Exception as e:
     log_and_display_error(f"Error al inicializar Vectorstore: {e}\n{traceback.format_exc()}")
 
@@ -99,7 +99,7 @@ except Exception as e:
 uploaded_files = st.sidebar.file_uploader("Sube tus documentos aquí:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
 if uploaded_files and not st.session_state.files_processed:
     all_docs = []
-    max_file_size_mb = 20
+    max_file_size_mb = 20  # Límite de 20 MB
     for uploaded_file in uploaded_files:
         try:
             if uploaded_file.size > max_file_size_mb * 1024 * 1024:
@@ -149,8 +149,10 @@ if uploaded_files and not st.session_state.files_processed:
 with st.container():
     st.subheader("Chat con tus documentos")
 
+    # Reservar espacio para el historial de chat
     chat_placeholder = st.empty()
 
+    # Rellenar el espacio reservado con el historial de chat
     with chat_placeholder.container():
         for i, chat in enumerate(st.session_state.chat_history):
             role, msg = chat
@@ -160,12 +162,15 @@ with st.container():
             else:
                 message(msg, key=key)
 
+    # Reservar un espacio para el formulario, siempre ubicado al final
     form_placeholder = st.empty()
 
+    # Usar un formulario para la entrada de texto
     with form_placeholder.form("consulta_form"):
         query = st.text_input("Coloca tu pregunta en esta caja:")
         submit_button = st.form_submit_button("Enviar")
 
+# Procesar la consulta solo al enviar el formulario
 if submit_button and query:
     if query != st.session_state.last_query:
         st.session_state.last_query = query
@@ -176,11 +181,14 @@ if submit_button and query:
                     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
                     rag_chain = ConversationalRetrievalChain.from_llm(llm, retriever)
 
+                    # Generar respuesta a la consulta
                     response = rag_chain.invoke({"question": query, "chat_history": st.session_state.chat_history})
 
+                    # Actualizar historial de chat
                     st.session_state.chat_history.append(("human", query))
                     st.session_state.chat_history.append(("assistant", response["answer"]))
 
+                    # Actualizar el historial en la interfaz
                     with chat_placeholder.container():
                         for i, chat in enumerate(st.session_state.chat_history):
                             role, msg = chat
