@@ -61,7 +61,7 @@ with st.sidebar:
     else:
         st.warning("Logotipo no encontrado en la ruta especificada.")
 
-# Mostrar el tÃ­tulo
+# Mostrar el ti­tulo
 st.title("CHAT IMARPE")
 
 # Inicializar el estado si no existe
@@ -80,19 +80,16 @@ if "last_query" not in st.session_state:
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-        from chromadb import Client
-        client = Client()
         st.session_state.vectorstore = Chroma(
-            client=client,
             persist_directory="./vectordb",
             embedding_function=OpenAIEmbeddings()
         )
-        st.success("Base de datos cargada exitosamente.")
+        st.success("Base de datos vectorial inicializada correctamente.")
 except Exception as e:
-    log_and_display_error(f"Error al cargar la base de datos: {e}\n{traceback.format_exc()}")
+    log_and_display_error(f"Error al inicializar Vectorstore: {e}\n{traceback.format_exc()}")
 
 # Procesar nuevos archivos si se suben
-uploaded_files = st.sidebar.file_uploader("Sube tus documentos aquÃ­:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
+uploaded_files = st.sidebar.file_uploader("Sube tus documentos aqui­:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
 if uploaded_files and not st.session_state.files_processed:
     all_docs = []
     max_file_size_mb = 20  # LÃ­mite de 20 MB
@@ -122,7 +119,7 @@ if uploaded_files and not st.session_state.files_processed:
                         description = f"Registro {index + 1}: {row_data}."
                         document = Document(page_content=description, metadata={"source": uploaded_file.name})
                         all_docs.append(document)
-                        st.write(f"Procesando chunk desde fila {start_row}")
+                        st.write(f"Procesando chunk desde fila {index + 1}")
                 except Exception as e:
                     log_and_display_error(f"Error al procesar Excel {uploaded_file.name}: {e}")
         except Exception as e:
