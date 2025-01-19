@@ -25,11 +25,11 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # SQLITE
 # Importar sqlite3 desde pysqlite3 si está disponible
-try:
-    from pysqlite3 import dbapi2 as sqlite3
-    sys.modules["sqlite3"] = sqlite3
-except ImportError:
-    import sqlite3  # Fallback al sqlite3 predeterminado
+#try:
+ #   from pysqlite3 import dbapi2 as sqlite3
+  #  sys.modules["sqlite3"] = sqlite3
+#except ImportError:
+ #   import sqlite3  # Fallback al sqlite3 predeterminado
 
 # Configuración de logging
 logging.basicConfig(
