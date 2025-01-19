@@ -78,19 +78,6 @@ if "files_processed" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
-def initialize_chroma():
-    try:
-        client = Client(
-            Settings(
-                chroma_db_impl="duckdb+parquet",  # Usa DuckDB en lugar de SQLite
-                persist_directory="./vectordb",
-                anonymized_telemetry=False,
-            )
-        )
-        return client
-    except Exception as e:
-        raise ValueError(f"Error inicializando la base de datos Chroma: {e}")
-
 # Inicializa la base de datos Chroma
 try:
     if "vectorstore" in st.session_state and st.session_state.vectorstore is not None:
