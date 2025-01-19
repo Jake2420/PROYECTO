@@ -29,7 +29,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
   #  sys.modules["sqlite3"] = sqlite3
 #except ImportError:
  #   import sqlite3  # Fallback al sqlite3 predeterminado
-# Configuracion de logging
+# Configuración de logging
 logging.basicConfig(
     filename="debug.log",
     level=logging.DEBUG,
@@ -41,16 +41,15 @@ def log_and_display_error(error_message):
     st.error(error_message)
 
 def check_system_resources():
-    # Verificar si hay al menos 500 MB de memoria disponible
     if psutil.virtual_memory().available < 500 * 1024 * 1024:
         log_and_display_error("Memoria insuficiente para procesar la solicitud. Cierre otras aplicaciones e intente nuevamente.")
         return False
     return True
 
-# Configuracion de la API de OpenAI
+# Configuración de la API de OpenAI
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
-# ConfiguraciÃ³n de la pÃ¡gina de Streamlit
+# Configuración de la página de Streamlit
 st.set_page_config(page_title="IA Chat", layout="wide")
 
 # Mostrar el logotipo en la barra lateral
@@ -61,7 +60,7 @@ with st.sidebar:
     else:
         st.warning("Logotipo no encontrado en la ruta especificada.")
 
-# Mostrar el ti­tulo
+# Mostrar el título
 st.title("CHAT IMARPE")
 
 # Inicializar el estado si no existe
@@ -77,29 +76,34 @@ if "files_processed" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
-## Cargar la base de datos vectorial al inicio si existe
+# Cargar la base de datos vectorial al inicio si existe
 try:
+    persist_directory = os.path.join(os.path.dirname(__file__), "vectordb")
+    from chromadb.config import Settings
+    client = chromadb.Client(Settings(
+        chroma_db_impl="duckdb+parquet",
+        persist_directory=persist_directory
+    ))
+
     if st.session_state.vectorstore is None:
-        from chromadb import Client
-        client = Client()
         st.session_state.vectorstore = Chroma(
             client=client,
-            persist_directory="./vectordb",
+            persist_directory=persist_directory,
             embedding_function=OpenAIEmbeddings()
         )
-        st.success("Base de datos cargada exitosamente.")
+        st.success("Base de datos vectorial inicializada correctamente.")
 except Exception as e:
-    log_and_display_error(f"Error al cargar la base de datos: {e}\n{traceback.format_exc()}")
+    log_and_display_error(f"Error al inicializar Vectorstore: {e}\n{traceback.format_exc()}")
 
 # Procesar nuevos archivos si se suben
-uploaded_files = st.sidebar.file_uploader("Sube tus documentos aqui­:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
+uploaded_files = st.sidebar.file_uploader("Sube tus documentos aquí:", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
 if uploaded_files and not st.session_state.files_processed:
     all_docs = []
-    max_file_size_mb = 20  # LÃ­mite de 20 MB
+    max_file_size_mb = 20
     for uploaded_file in uploaded_files:
         try:
             if uploaded_file.size > max_file_size_mb * 1024 * 1024:
-                log_and_display_error(f"El archivo {uploaded_file.name} excede el tamaÃ±o mÃ¡ximo permitido de {max_file_size_mb} MB.")
+                log_and_display_error(f"El archivo {uploaded_file.name} excede el tamaño máximo permitido de {max_file_size_mb} MB.")
                 continue
 
             if uploaded_file.name.endswith(".pdf"):
@@ -112,17 +116,12 @@ if uploaded_files and not st.session_state.files_processed:
                     log_and_display_error(f"Error al procesar PDF {uploaded_file.name}: {e}")
             elif uploaded_file.name.endswith((".xlsx", ".xls")):
                 try:
-                    # Leer el archivo Excel completo
                     df = pd.read_excel(uploaded_file)
-
-                    # Crear descripciones dinÃ¡micas para cada fila
                     for index, row in df.iterrows():
-                        # Convertir toda la fila en una descripciÃ³n basada en todas las columnas
                         row_data = ", ".join([f"{col}: {row[col]}" for col in df.columns if not pd.isna(row[col])])
                         description = f"Registro {index + 1}: {row_data}."
                         document = Document(page_content=description, metadata={"source": uploaded_file.name})
                         all_docs.append(document)
-                        st.write(f"Procesando chunk desde fila {index + 1}")
                 except Exception as e:
                     log_and_display_error(f"Error al procesar Excel {uploaded_file.name}: {e}")
         except Exception as e:
@@ -136,11 +135,11 @@ if uploaded_files and not st.session_state.files_processed:
         try:
             if st.session_state.vectorstore:
                 st.session_state.vectorstore.add_documents(splits)
-                st.session_state.vectorstore.persist()  # MÃ©todo correcto para persistir los datos
-                st.success("Nuevos documentos procesados y aÃ±adidos a la base de datos.")
+                st.session_state.vectorstore.persist()
+                st.success("Nuevos documentos procesados y añadidos a la base de datos.")
                 st.session_state.files_processed = True
             else:
-                log_and_display_error("Vectorstore no estÃ¡ inicializado.")
+                log_and_display_error("Vectorstore no está inicializado.")
         except Exception as e:
             log_and_display_error(f"Error al actualizar la base de datos: {e}\n{traceback.format_exc()}")
     else:
@@ -150,29 +149,23 @@ if uploaded_files and not st.session_state.files_processed:
 with st.container():
     st.subheader("Chat con tus documentos")
 
-    # Reservar espacio para el historial de chat
     chat_placeholder = st.empty()
 
-    # Rellenar el espacio reservado con el historial de chat
     with chat_placeholder.container():
         for i, chat in enumerate(st.session_state.chat_history):
             role, msg = chat
-            # Generar una clave Ãºnica usando el Ã­ndice y un timestamp
             key = f"{role}_{i}_{int(time.time() * 1000)}"
             if role == "human":
                 message(msg, is_user=True, key=key)
             else:
                 message(msg, key=key)
 
-    # Reservar un espacio para el formulario, siempre ubicado al final
     form_placeholder = st.empty()
 
-    # Usar un formulario para la entrada de texto
     with form_placeholder.form("consulta_form"):
         query = st.text_input("Coloca tu pregunta en esta caja:")
         submit_button = st.form_submit_button("Enviar")
 
-# Procesar la consulta solo al enviar el formulario
 if submit_button and query:
     if query != st.session_state.last_query:
         st.session_state.last_query = query
@@ -183,18 +176,14 @@ if submit_button and query:
                     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
                     rag_chain = ConversationalRetrievalChain.from_llm(llm, retriever)
 
-                    # Generar respuesta a la consulta
                     response = rag_chain.invoke({"question": query, "chat_history": st.session_state.chat_history})
 
-                    # Actualizar historial de chat
                     st.session_state.chat_history.append(("human", query))
                     st.session_state.chat_history.append(("assistant", response["answer"]))
 
-                    # Actualizar el historial en la interfaz
                     with chat_placeholder.container():
                         for i, chat in enumerate(st.session_state.chat_history):
                             role, msg = chat
-                            # Generar una clave Ãºnica usando el Ã­ndice y un timestamp
                             key = f"{role}_{i}_{int(time.time() * 1000)}"
                             if role == "human":
                                 message(msg, is_user=True, key=key)
@@ -204,6 +193,6 @@ if submit_button and query:
                 except Exception as e:
                     log_and_display_error(f"Error al realizar la consulta: {e}\n{traceback.format_exc()}")
         else:
-            log_and_display_error("La base de datos no estÃ¡ cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
+            log_and_display_error("La base de datos no está cargada. Por favor, procesa nuevos archivos o verifica la carga de la base de datos persistente.")
     else:
         st.warning("La pregunta ya fue enviada.")
