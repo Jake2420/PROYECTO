@@ -11,6 +11,7 @@ from langchain.chains import ConversationalRetrievalChain
 from streamlit_chat import message
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
+from chromadb.config import Settings
 import streamlit as st
 import pdfplumber
 import time 
@@ -18,6 +19,7 @@ import chromadb
 import pysqlite3
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 # Configuración de logging
 logging.basicConfig(
@@ -69,11 +71,15 @@ if "last_query" not in st.session_state:
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-        client = chromadb.Client()  # Usar inicialización recomendada oficialmente
-        collection = client.get_or_create_collection(name="./vectordb")
+        client = chromadb.PersistentClient(
+            path="./chroma",
+            settings=Settings(
+                chroma_db_impl="duckdb+parquet",
+                persist_directory="./chroma"
+            )
+        )
         st.session_state.vectorstore = Chroma(
             client=client,
-            collection_name="./vectordb",
             embedding_function=OpenAIEmbeddings()
         )
         st.success("Base de datos cargada exitosamente.")
