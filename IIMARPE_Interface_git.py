@@ -19,10 +19,7 @@ import time
 from chromadb.utils import reset  # Importación para reiniciar configuraciones previas
 __import__('pysqlite3')
 import sys
-
-#
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
 
 # SQLITE
 # Importar sqlite3 desde pysqlite3 si está disponible
