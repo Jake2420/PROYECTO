@@ -70,10 +70,10 @@ if "last_query" not in st.session_state:
 try:
     if st.session_state.vectorstore is None:
         client = chromadb.Client()  # Usar inicialización recomendada oficialmente
-        collection = client.get_or_create_collection(name="chroma_docs")
+        collection = client.get_or_create_collection(name="./vectordb")
         st.session_state.vectorstore = Chroma(
             client=client,
-            collection_name="chroma_docs",
+            collection_name="./vectordb",
             embedding_function=OpenAIEmbeddings()
         )
         st.success("Base de datos cargada exitosamente.")
