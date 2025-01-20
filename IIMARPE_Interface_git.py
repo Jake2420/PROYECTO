@@ -12,7 +12,6 @@ from streamlit_chat import message
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
 import streamlit as st
-import chromadb
 import pdfplumber
 import time
 __import__('pysqlite3')
