@@ -17,8 +17,6 @@ import pdfplumber
 import time
 __import__('pysqlite3')
 import sys
-
-#
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # Configuración de logging
