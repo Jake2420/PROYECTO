@@ -71,13 +71,10 @@ if "last_query" not in st.session_state:
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-        client = chromadb.PersistentClient(
-            path="./chroma",
-            settings=Settings(
-                chroma_db_impl="duckdb+parquet",
-                persist_directory="./chroma"
-            )
-        )
+        client = Client(Settings(
+            persist_directory="./chroma",  # Cambia el directorio según sea necesario
+            chroma_db_impl="duckdb+parquet"
+        ))
         st.session_state.vectorstore = Chroma(
             client=client,
             embedding_function=OpenAIEmbeddings()
