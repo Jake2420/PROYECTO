@@ -92,6 +92,9 @@ try:
             embedding_function=OpenAIEmbeddings()
         )
         st.success("Base de datos cargada exitosamente.")
+        logging.info("Base de datos inicializada con éxito.")
+    else:
+        logging.info("Base de datos ya estaba inicializada.")
 except Exception as e:
     log_and_display_error(f"Error al inicializar Vectorstore: {e}\n{traceback.format_exc()}")
 
