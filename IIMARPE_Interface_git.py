@@ -16,9 +16,9 @@ import streamlit as st
 import chromadb
 import pdfplumber
 import time
-from chromadb.utils import reset  # Importación para reiniciar configuraciones previas
 __import__('pysqlite3')
 import sys
+
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # SQLITE
@@ -79,9 +79,6 @@ if "last_query" not in st.session_state:
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-        # Reiniciar cualquier configuración previa
-        reset()
-
         client_settings = Settings(
             persist_directory="./vectordb",
             chroma_db_impl="duckdb+parquet",
