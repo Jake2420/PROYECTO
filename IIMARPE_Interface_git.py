@@ -83,6 +83,7 @@ try:
     else:
         logging.info("Base de datos ya estaba inicializada.")
 except Exception as e:
+    st.session_state.vectorstore = None
     log_and_display_error(f"Error al inicializar Vectorstore: {e}\n{traceback.format_exc()}")
 
 # Procesar nuevos archivos si se suben
@@ -129,7 +130,7 @@ if uploaded_files and not st.session_state.files_processed:
                 st.success("Nuevos documentos procesados y añadidos a la base de datos.")
                 st.session_state.files_processed = True
             else:
-                log_and_display_error("Vectorstore no está inicializado.")
+                log_and_display_error("Vectorstore no está inicializado. Por favor, reinicia la aplicación.")
         except Exception as e:
             log_and_display_error(f"Error al actualizar la base de datos: {e}\n{traceback.format_exc()}")
     else:
