@@ -13,6 +13,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import Document
 from chromadb.config import Settings
 from chromadb import Client
+from typing import Optional
 import streamlit as st
 import pdfplumber
 import time 
