@@ -75,7 +75,8 @@ try:
     if st.session_state.vectorstore is None:
         def PersistentClient(path: str = "./vectordb",
                              settings: Optional[Settings] = None,
-                             tenant: str = DEFAULT_TENANT):
+                             tenant: str = 'DEFAULT_TENANT',
+                             database: str = 'DEFAULT_DATABASE'):
             # Devuelve el cliente con configuración adecuada
             return Client(Settings(
                 persist_directory=path,
