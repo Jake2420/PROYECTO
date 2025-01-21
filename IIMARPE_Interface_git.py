@@ -70,14 +70,21 @@ if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
 # Cargar la base de datos vectorial al inicio si existe
+# Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-       def PersistentClient(path: str = "./chroma",
-                     settings: Optional[Settings] = None,
-                     tenant: str = DEFAULT_TENANT,
-                     database: str = DEFAULT_DATABASE)
+        def PersistentClient(path: str = "./chroma",
+                             settings: Optional[Settings] = None,
+                             tenant: str = DEFAULT_TENANT,
+                             database: str = DEFAULT_DATABASE):
+            # Devuelve el cliente con configuración adecuada
+            return Client(Settings(
+                persist_directory=path,
+                chroma_db_impl="duckdb+parquet"
+            ))
+        
         st.session_state.vectorstore = Chroma(
-            client=PersistentClient,
+            client=PersistentClient(),
             embedding_function=OpenAIEmbeddings()
         )
         st.success("Base de datos cargada exitosamente.")
