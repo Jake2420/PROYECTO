@@ -73,7 +73,7 @@ if "last_query" not in st.session_state:
 # Cargar la base de datos vectorial al inicio si existe
 try:
     if st.session_state.vectorstore is None:
-        def PersistentClient(path: str = "./chroma",
+        def PersistentClient(path: str = "./vectordb",
                              settings: Optional[Settings] = None,
                              tenant: str = DEFAULT_TENANT,
                              database: str = DEFAULT_DATABASE):
