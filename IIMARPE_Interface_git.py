@@ -73,8 +73,8 @@ if "last_query" not in st.session_state:
 try:
     if st.session_state.vectorstore is None:
        def PersistentClient(path: str = "./chromadb",
-                     tenant = DEFAULT_TENANT,
-                     database = DEFAULT_DATABASE) 
+                     tenant = 'DEFAULT_TENANT',
+                     database = 'DEFAULT_DATABASE') 
         st.session_state.vectorstore = Chroma(
             client=PersistentClient,
             embedding_function=OpenAIEmbeddings()
